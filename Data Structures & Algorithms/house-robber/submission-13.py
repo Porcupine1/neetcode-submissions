@@ -1,0 +1,15 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n= len(nums)
+        dp = [0]*n
+        def dfs(i):
+            if i >= n:
+                return 0
+
+            if dp[i]:
+                return dp[i]
+            
+            dp[i] = max(nums[i]+dfs(i+2), dfs(i+1))
+            return dp[i]
+
+        return dfs(0)
